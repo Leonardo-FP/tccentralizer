@@ -27,7 +27,7 @@
         <a href="selecao_documento_aluno.php"><button>Documentos</button></a>
         <br>
         
-        <a href="tela_incial.php"><button>Sair</button></a>
+        <a href="../sair.php"><button>Sair</button></a>
     </div>
 </body>
 </html>
