@@ -7,12 +7,12 @@
     <title>Selecionar o tipo de cadastro</title>
 </head>
 <body>
-    <a href="cadastro_orientador.html"><button>Orientador</button></a>
+    <a href="cadastro_orientador.php"><button>Orientador</button></a>
     
-    <a href="cadastro_grupo.html"><button>Grupo</button></a>
+    <a href="cadastro_grupo.php"><button>Grupo</button></a>
     <br>
 
-    <a href="tela_incial.html"><button>Voltar</button></a>
+    <a href="tela_incial.php"><button>Voltar</button></a>
     
 </body>
 </html>
