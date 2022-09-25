@@ -22,10 +22,5 @@
         <button type="submit" name="submitGrupo">Entrar</button>
         <a href="../index.php">Cancelar</a>
     </form>
-
-    <div >
-        <a href="sair.php">Sair</a>
-    </div>
-    
 </body>
 </html>
