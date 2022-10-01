@@ -38,7 +38,7 @@
 
     <a href="telas/escolha_login.php">Login</a>
     
-    <a href="telas/escolha_cadastro.php">Cadastro</a>
+    <a href="telas/escolha_cadastro.php">Cadastre-se</a>
 
 
 

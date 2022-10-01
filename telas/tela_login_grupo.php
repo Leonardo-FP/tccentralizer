@@ -7,6 +7,9 @@
     <title>Autenticação</title>
 </head>
 <body>
+
+    <h1>Login Grupo</h1>
+
     <form method="POST" action="../php/teste_login.php">
 
         <label for="nomeGrupo">Nome do grupo</label>
