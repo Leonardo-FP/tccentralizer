@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    print_r($_SESSION);
+
     if((!isset($_SESSION['nome'])) and (!isset($_SESSION['senha'])))  {
         unset($_SESSION['nome']);
         unset($_SESSION['senha']);
@@ -27,7 +27,7 @@
         <a href="selecao_documento_aluno.php"><button>Documentos</button></a>
         <br>
         
-        <a href="./sair.php"><button>Sair</button></a>
+        <a href="sair.php"><button>Logout</button></a>
     </div>
 </body>
 </html>

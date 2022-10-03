@@ -13,7 +13,7 @@
     <a href="cadastro_grupo.php"><button class="btn btn-lg btn-primary btn-block">Grupo</button></a>
     <br>
 
-    <a href="tela_incial.php"><button class="btn btn-lg btn-primary btn-block">Voltar</button></a>
+    <a href="../"><button class="btn btn-lg btn-primary btn-block">Voltar</button></a>
     
 </body>
 </html>

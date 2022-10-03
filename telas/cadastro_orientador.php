@@ -20,8 +20,7 @@
         <br>
 
         <button class="btn btn-lg btn-primary btn-block">Cadastrar</button>
-        <button class="btn btn-lg btn-primary btn-block">Voltar</button>
-
+        <a class="btn btn-lg btn-primary btn-block" href="escolha_cadastro.php">Voltar</a>
     </form>
 
 </body>

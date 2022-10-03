@@ -1,57 +1,17 @@
 <!DOCTYPE html>
 <?php
 
-if(isset($_POST['submitOrientador'])){   
-    if(!empty($_POST['nomeOrientador']) && !empty($_POST['senhaOrientador'])){
+    session_start();
 
-        $nome = $_POST['nomeOrientador'];
-        $senha = $_POST['senhaOrientador'];
-        $usuario = "orientador";
-        
-        $existe_usuario = $u->verifica_login($nome, $senha, $usuario);
-        
-        if(!$existe_usuario){
-            unset($_SESSION['nome']);
-            unset($_SESSION['senha']);
+    if((!isset($_SESSION['nome'])) and (!isset($_SESSION['senha'])))  {
+        unset($_SESSION['nome']);
+        unset($_SESSION['senha']);
 
-            echo "<script>alert('Usuário não encontrado no banco de dados!')</script>";
+        echo "<script>alert('Você não pode entrar aqui sem logar!!!!!!')</script>";
 
-            echo "<script>location.href='../telas/tela_login_orientador.php';</script>";
-        }else{
-            $_SESSION['nome'] = $nome;
-            $_SESSION['senha'] = $senha;
-            header('Location: ../telas/home.php');
-        }
-    }else{
-        echo "Digite os campos corretamente";
+        echo "<script>location.href='escolha_login.php';</script>";
     }
-}else if(isset($_POST['submitGrupo'])){
-    if(!empty($_POST['nomeGrupo']) && !empty($_POST['senhaGrupo'])){
-
-        $nome = $_POST['nomeGrupo'];
-        $senha = $_POST['senhaGrupo'];
-        $usuario = "grupo";
-        
-        $existe_usuario = $u->verifica_login($nome, $senha, $usuario);
-        
-        if(!$existe_usuario){
-            unset($_SESSION['nome']);
-            unset($_SESSION['senha']);
-
-            echo "<script>alert('Usuário não encontrado no banco de dados!')</script>";
-
-            echo "<script>location.href='../telas/tela_login_grupo.php';</script>";
-        }else{
-            $_SESSION['nome'] = $nome;
-            $_SESSION['senha'] = $senha;
-            header('Location: ../telas/home.php');
-        }
-    }else{
-        echo "Digite os campos corretamente";
-    }
-}else{
-    header('Location: ../index.php');
-}
+    $logado = $_SESSION['nome'];
 
 ?>
 
