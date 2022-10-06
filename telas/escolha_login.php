@@ -8,14 +8,24 @@
     <title>Selecionar o tipo de login</title>
 </head>
 <body>
-    <h2>Selecione como deseja logar</h2>
 
-    <a href="tela_login_orientador.php"><button class="btn btn-lg btn-primary btn-block">Orientador</button></a>
+    <div>
+        
+        <h2>Selecione como deseja logar</h2>
+
+        <a class="btn btn-lg btn-primary btn-block" href="tela_login_orientador.php">Orientador</a>
+        <br>
     
-    <a href="tela_login_grupo.php"><button class="btn btn-lg btn-primary btn-block">Grupo</button></a>
-    <br>
+        <a class="btn btn-lg btn-primary btn-block" href="tela_login_grupo.php">Grupo</a>
+        <br>
 
-    <a href="../index.php"><button class="btn btn-lg btn-primary btn-block">Voltar</button></a>
+        <a class="btn btn-lg btn-primary btn-block" href="../index.php">Voltar</a>
+
+        
+    </div>
+    
+
+    
     
     
 </body>

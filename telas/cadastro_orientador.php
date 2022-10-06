@@ -8,6 +8,7 @@
     <title>Cadastro Orientador</title>
 </head>
 <body>
+    
     <form action="">
 
         <label for="">Nome</label>
@@ -20,7 +21,9 @@
         <br>
 
         <button class="btn btn-lg btn-primary btn-block">Cadastrar</button>
+        
         <a class="btn btn-lg btn-primary btn-block" href="escolha_cadastro.php">Voltar</a>
+
     </form>
 
 </body>

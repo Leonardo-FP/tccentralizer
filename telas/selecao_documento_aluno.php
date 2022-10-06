@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php
+<!--<?php
 
     session_start();
 
@@ -13,7 +13,7 @@
     }
     $logado = $_SESSION['nome'];
 
-?>
+?>-->
 
 
 <html lang="pt-br">
@@ -21,15 +21,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Seleção de Documento</title>
 </head>
 <body>
 
-    <div style="background-color: rgb(68, 64, 64);width: 500px;height: 300px;">
+    <div>
+
+        <div class="tela">
+        
+        </div>
+
+        <br>
+
+        <button id="botao" class="btn btn-primary" >Lançar</button>
 
     </div>
 
-    <input type="submit" value="Selecionar">
-
+    
 </body>
 </html>

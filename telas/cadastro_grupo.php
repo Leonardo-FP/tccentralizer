@@ -8,6 +8,8 @@
     <title>Cadastro Aluno</title>
 </head>
 <body>
+    
+
     <form action="">
 
         <label for="">Grupo</label>
@@ -21,5 +23,8 @@
         <button class="btn btn-lg btn-primary btn-block" type="">Cadastrar</button>
     
         <a class="btn btn-lg btn-primary btn-block" href="escolha_cadastro.php">Voltar</a>
+        
+    </form>
+    
 </body>
 </html>

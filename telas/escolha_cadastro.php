@@ -8,12 +8,22 @@
     <title>Selecionar o tipo de cadastro</title>
 </head>
 <body>
-    <a href="cadastro_orientador.php"><button class="btn btn-lg btn-primary btn-block">Orientador</button></a>
-    
-    <a href="cadastro_grupo.php"><button class="btn btn-lg btn-primary btn-block">Grupo</button></a>
-    <br>
 
-    <a href="../"><button class="btn btn-lg btn-primary btn-block">Voltar</button></a>
+    <div >
+
+        <h1>Selecionar o tipo de cadastro</h1>
+        
+
+        <a class="btn btn-lg btn-primary btn-block" href="cadastro_orientador.php">Orientador</a>
+        <br>
+    
+        <a class="btn btn-lg btn-primary btn-block" href="cadastro_grupo.php">Grupo</a>
+        <br>
+        
+        <a class="btn btn-lg btn-primary btn-block" href="../telas/home.php">Voltar</a>
+
+    </div>
+    
     
 </body>
 </html>
