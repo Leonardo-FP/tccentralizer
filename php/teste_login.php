@@ -50,6 +50,11 @@ if(isset($_POST['submitOrientador'])){
             $_SESSION['nome'] = $nome;
             $_SESSION['senha'] = $senha;
             $_SESSION['usuario'] = $usuario;
+
+            $dados_grupo = $u->infos_grupo($nome, $senha);
+            $_SESSION['id_turma'] = $dados_grupo['idTurma'];
+            $_SESSION['id_grupo'] = $dados_grupo['idGrupo'];
+
             header('Location: ../telas/home.php');
         }
     }else{

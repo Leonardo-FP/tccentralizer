@@ -3,10 +3,6 @@
 
     $u = new database;
     $u->conectar();
-
-    if($u->msgErro == ""){
-        
-    }
 ?> 
 
 <!DOCTYPE html>
