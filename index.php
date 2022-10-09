@@ -48,6 +48,7 @@
 
     
     
+    <a href="telas/escolha_cadastro.php">Cadastre-se</a>
 
 
 
