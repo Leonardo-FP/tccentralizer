@@ -40,17 +40,7 @@
         
             <a id="botao" class="btn btn-primary" href="telas/escolha_cadastro.php">Cadastro</a>
         </div>
-        
-
-        
 
     </div>
-
-    
-    
-    <a href="telas/escolha_cadastro.php">Cadastre-se</a>
-
-
-
 </body>
 </html>
