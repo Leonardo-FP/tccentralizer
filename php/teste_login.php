@@ -24,6 +24,7 @@ if(isset($_POST['submitOrientador'])){
         }else{
             $_SESSION['nome'] = $nome;
             $_SESSION['senha'] = $senha;
+            $_SESSION['usuario'] = $usuario;
             header('Location: ../telas/home.php');
         }
     }else{
@@ -48,6 +49,7 @@ if(isset($_POST['submitOrientador'])){
         }else{
             $_SESSION['nome'] = $nome;
             $_SESSION['senha'] = $senha;
+            $_SESSION['usuario'] = $usuario;
             header('Location: ../telas/home.php');
         }
     }else{

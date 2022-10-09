@@ -1,9 +1,42 @@
 /* Get_Bootstrap */
 @import url(https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css);
 
+
 body{
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+input{
+    display: flex;
+}
+
+a:link{
+    text-decoration: none;
+   
+}
+
+
+.tela{
+    border-radius: 5px;
+    height: 290px;
+    width: 90vw;
+    background-color: dimgray;
+
+}
+
+#botao{
+    width: 150px;
+    margin-left: 5px;
+        
+}
+
+.home > * {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
 }

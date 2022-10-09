@@ -7,7 +7,7 @@
     if($u->msgErro == ""){
         
     }
-?>
+?> 
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -15,28 +15,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Tela Inicial</title>
 </head>
 <body>
-    <h1>Controle de Trabalhos de Conclusão de Curso</h1>
 
-    <h2>Bem vindo</h2>
-    <br>
+    <div class="home">
+    
+        <h1>Controle de Trabalhos de Conclusão de Curso</h1>
 
-    <h2>Autores:
+        <h2>Bem vindo</h2>
         <br>
-        black
-        <br>
-        leo
-        <br>
-        rafael
-        <br>
-        draken
-        <br>
-        kaique
-    </h2>
 
-    <a href="telas/escolha_login.php">Login</a>
+        <h2 >Autores:
+            <br>
+            Leo
+            <br>
+            Yago
+            <br>
+            Rafael
+            <br>
+            Kaique
+        </h2>
+
+        <div>
+            <a id="botao" class="btn btn-primary" href="telas/escolha_login.php">Login</a>
+            
+        
+            <a id="botao" class="btn btn-primary" href="telas/escolha_cadastro.php">Cadastro</a>
+        </div>
+        
+
+        
+
+    </div>
+
+    
     
     <a href="telas/escolha_cadastro.php">Cadastre-se</a>
 

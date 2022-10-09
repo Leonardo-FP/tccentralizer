@@ -33,6 +33,9 @@
 
         <button type="submit" name="btn-cadastrar">Cadastrar</button>
     
-        <a href="escolha_cadastro.php">Voltar</a>
+        <a class="btn btn-lg btn-primary btn-block" href="escolha_cadastro.php">Voltar</a>
+        
+    </form>
+    
 </body>
 </html>

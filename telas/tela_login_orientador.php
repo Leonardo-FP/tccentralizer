@@ -8,6 +8,7 @@
     <title>Autenticação</title>
 </head>
 <body>
+    
     <form method="POST" action="../php/teste_login.php">
 
         <label for="nomeOrientador">Nome do orientador</label>
@@ -21,7 +22,11 @@
         <input type="hidden" name="tipo_usuario" value="orientador">
 
         <button type="submit" name="submitOrientador" class="btn btn-lg btn-primary btn-block">Entrar</button>
-        <a href="../index.php">Cancelar</a>
+
+        <br>
+        
+        <a class="btn btn-lg btn-primary btn-block" href="../index.php">Cancelar</a>
+        
     </form>
 
     
