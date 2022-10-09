@@ -1,31 +1,34 @@
 <?php
 
-include_once('../conexao/conn.php');
+include_once('../conexao/db_connect.php');
 
 if(isset($_POST['btn-cadastrar'])){
 
-    global $con;
+    $connect = mysqli_connect($servername,$username,$password,$db_name);
     
-            $nomeGrupo = mysqli_escape_string($con, $_POST['nomeGrupo']);
+            $nomeGrupo = mysqli_escape_string($connect, $_POST['nomeGrupo']);
 
-            $senhaGrupo = mysqli_escape_string($con, $_POST['senhaGrupo']);
+            $nomeTurma = mysqli_escape_string($connect, $_POST['nomeTurma']);
 
-            $emailGrupo = mysqli_escape_string($con, $_POST['emailGrupo']);
+            $senhaGrupo = mysqli_escape_string($connect, $_POST['senhaGrupo']);
 
-            $dataCadastro = mysqli_escape_string($con, $_POST['dataCadastro']);
+            $emailGrupo = mysqli_escape_string($connect, $_POST['emailGrupo']);
 
+            $dataCadastroGrupo = mysqli_escape_string($connect, $_POST['dataCadastroGrupo']);
 
-        $sql = "INSERT INTO tccentralizer.grupo(:nomeGrupo, :senhaGrupo, :emailGrupo, :dataCadastro) VALUES 
-        ('$nomeGrupo', '$senhaGrupo', '$emailGrupo','$dataCadastro')";
+        //Falta apenas ajustar o INSERT com as tabelas ESTRANGEIRAS
 
-    if(mysqli_query($con, $sql)){
+        $sql = "INSERT INTO grupo(idTurma, nomeGrupo, senhaGrupo, emailGrupo, dataCadastro) VALUES 
+        (1,'$nomeGrupo', '$senhaGrupo', '$emailGrupo','$dataCadastroGrupo') ";
+
+    if(mysqli_query($connect, $sql)){
         
-        header('Location: ../index.php?sucesso');
+       
+            header('Location: ../index.php?sucesso');
 
-    } else{ 
+        
+    } else 
         header('Location: ../index.php?erro');
-
-    }
 
 }
 

@@ -1,18 +1,16 @@
 <!DOCTYPE html>
-<?php
-    //Botão Cadastrar
-if(isset($_POST['btn-cadastrar'])){
-    echo 'clicou';
-}
-
-?>
 
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Cadastro Grupo</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Cadastro Aluno</title>
+
 </head>
 <body>
     <form action="../php/dados_grupo.php" method="POST">
@@ -29,12 +27,12 @@ if(isset($_POST['btn-cadastrar'])){
         <input type="emailGrupo" name="emailGrupo" id="emailGrupo">
         <br>
 
-        <label for="dataCadastro">Data de Cadastro</label>
-        <input type="date" name="dataCadastro" id="dataCadastro">
+        <label for="dataCadastroGrupo">Data de Cadastro</label>
+        <input type="date" name="dataCadastroGrupo" id="dataCadastroGrupo">
         <br>
 
         <button type="submit" name="btn-cadastrar">Cadastrar</button>
     
-        <a href="escolha_cadastro.php"><button>voltar</button></a>
+        <a href="escolha_cadastro.php">Voltar</a>
 </body>
 </html>
