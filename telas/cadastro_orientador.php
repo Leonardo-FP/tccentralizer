@@ -8,19 +8,29 @@
     <title>Cadastro Orientador</title>
 </head>
 <body>
-    <form action="">
+    <form action="../php/dados_orientador.php" method="POST">
 
-        <label for="">Nome</label>
-        <input require autofocus type="text" name="" id="" class="form-control">
+        <label for="nomeOrientador">Nome Completo</label>
+        <input require autofocus type="text" name="nomeOrientador" id="nomeOrientador" class="form-control">
         <br>
 
 
-        <label for="">Senha</label>
-        <input require type="password" name="" id="" class="form-control">
+        <label for="senhaOrientador">Senha</label>
+        <input require type="password" name="senhaOrientador" id="senhaOrientador" class="form-control">
         <br>
 
-        <button class="btn btn-lg btn-primary btn-block">Cadastrar</button>
-        <a class="btn btn-lg btn-primary btn-block" href="escolha_cadastro.php">Voltar</a>
+        <label for="emailOrientador">Email</label>
+        <input require autofocus type="email" name="emailOrientador" id="emailOrientador" class="form-control">
+        <br>
+
+
+        <label for="dataCadastroOrientador">Data de Cadastro</label>
+        <input require type="date" name="dataCadastroOrientador" id="dataCadastroOrientador" class="form-control">
+        <br>
+
+        <button class="btn btn-lg btn-primary btn-block" name="btn-cadastrar">Cadastrar</button>
+        <button class="btn btn-lg btn-primary btn-block">Voltar</button>
+
     </form>
 
 </body>

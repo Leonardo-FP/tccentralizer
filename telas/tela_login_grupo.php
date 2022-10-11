@@ -8,6 +8,9 @@
     <title>Autenticação</title>
 </head>
 <body>
+
+    <h1>Login Grupo</h1>
+
     <form method="POST" action="../php/teste_login.php">
 
         <label for="nomeGrupo">Nome do grupo</label>
@@ -21,7 +24,12 @@
         <input type="hidden" name="tipo_usuario" value="grupo">
 
         <button type="submit" name="submitGrupo" class="btn btn-lg btn-primary btn-block">Entrar</button>
-        <a href="../index.php">Cancelar</a>
+
+        <br>
+        
+        <a class="btn btn-lg btn-primary btn-block" href="../index.php">Cancelar</a>
+
     </form>
+
 </body>
 </html>

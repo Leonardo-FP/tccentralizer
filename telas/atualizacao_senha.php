@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<?php
 
+<?php
     session_start();
     include_once('../conexao/conn.php');
     $u = new database;
@@ -18,34 +18,42 @@
     echo $logado;
 ?>
 
+
+
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mudança de senha</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Atualização de senha</title>
 </head>
 <body>
 
     <form method="POST">
+        
         <label for="senha_antiga">Senha antiga:</label>
-        <input type="password" name="senha_antiga" required>
+        <input class="form-control" type="password" name="senha_antiga" required>
         <br>
 
         <label for="nova_senha">Nova senha:</label>
-        <input type="password" name="nova_senha" required>
+        <input class="form-control" type="password" name="nova_senha" required>
         <br>
 
         <label for="confirma_nova_senha">Confirmar nova senha</label>
-        <input type="password" name="confirma_nova_senha" required>
+        <input class="form-control" type="password" name="confirma_nova_senha" required>
         <br>
 
-        <input type="submit" name="alterar">
+        <input class="btn btn-lg btn-primary btn-block" type="submit" name="alterar">
+
+        <a  class="btn btn-lg btn-primary btn-block" href="home.php">Voltar</a>
+
     </form>
 
-    <a class="btn btn-lg btn-primary btn-block" href="home.php">Voltar</a>
+    
 </body>
 </html>
+
 <?php 
     if(isset($_POST['alterar'])){
 
@@ -115,3 +123,4 @@
 
     }
 ?>
+
