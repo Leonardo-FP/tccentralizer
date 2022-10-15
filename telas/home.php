@@ -1,4 +1,4 @@
-<!--<?php 
+<?php 
     session_start();
 
     if((!isset($_SESSION['nome'])) and (!isset($_SESSION['senha'])))  {
@@ -9,8 +9,8 @@
 
         echo "<script>location.href='escolha_login.php';</script>";
     }
-    $logado = $_SESSION['nome'];
-?>-->
+
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -27,10 +27,19 @@
         <a class="btn btn-lg btn-primary btn-block" href="atualizacao_senha.php">Atualizar Senha</a>
         <br>
 
-        <a class="btn btn-lg btn-primary btn-block" href="selecao_documento_aluno.php">Documentos</a>
-        <br>
-        
-        <a class="btn btn-lg btn-primary btn-block" href="sair.php">Logout</a>
+        <?php 
+            if(isset($_SESSION['usuario'])){
+                if($_SESSION['usuario'] == "orientador"){ ?>
+                <a class="btn btn-lg btn-primary btn-block" href="selecao_documentos_orientador.php">Documentos</a>
+                <br>
+            <?php }else{ ?>
+                <a class="btn btn-lg btn-primary btn-block" href="selecao_documento_aluno.php">Documentos</a>
+                <br>
+            <?php }
+            }
+            
+        echo '<a class="btn btn-lg btn-primary btn-block" href="sair.php?token='.md5(session_id()).'">Logout</a>';
+        ?>
         
     </div>
 

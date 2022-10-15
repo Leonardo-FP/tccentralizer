@@ -16,6 +16,13 @@
 
         echo "<script>location.href='escolha_login.php';</script>";
     }
+
+    if(($_SESSION['usuario'] == "orientador"))  {
+        echo "<script>alert('Essa tela é somente do grupo !!!!!!')</script>";
+
+        echo "<script>location.href='home.php';</script>";
+    }
+
     $logado = $_SESSION['nome'];
     $id_turma = $_SESSION['id_turma'];
     $id_grupo = $_SESSION['id_grupo'];

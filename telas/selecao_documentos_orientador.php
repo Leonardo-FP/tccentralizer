@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<!--<?php
+<?php
     session_start();
-
     if((!isset($_SESSION['nome'])) and (!isset($_SESSION['senha'])))  {
         unset($_SESSION['nome']);
         unset($_SESSION['senha']);
@@ -10,9 +9,16 @@
 
         echo "<script>location.href='escolha_login.php';</script>";
     }
-    $logado = $_SESSION['nome'];
 
-?>-->
+    if(($_SESSION['usuario'] == "grupo"))  {
+        echo "<script>alert('Essa tela é somente do professor !!!!!!')</script>";
+
+        echo "<script>location.href='home.php';</script>";
+    }
+
+
+    $logado = $_SESSION['nome'];
+?>
 
 <html lang="pt-br">
 <head>
