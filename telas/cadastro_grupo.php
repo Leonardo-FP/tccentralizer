@@ -16,22 +16,22 @@
     <form action="../php/dados_grupo.php" method="POST">
 
         <label for="nomeGrupo">Grupo</label>
-        <input type="text" name="nomeGrupo" id="nomeGrupo">
+        <input require autofocus type="text" name="nomeGrupo" id="nomeGrupo" class="form-control">
         <br>
 
         <label for="senhaGrupo">Senha</label>
-        <input type="password" name="senhaGrupo" id="senhaGrupo">
+        <input require type="password" name="senhaGrupo" id="senhaGrupo" class="form-control">
         <br>
 
         <label for="emailGrupo">Email</label>
-        <input type="emailGrupo" name="emailGrupo" id="emailGrupo">
+        <input require type="emailGrupo" name="emailGrupo" id="emailGrupo" class="form-control">
         <br>
 
         <label for="dataCadastroGrupo">Data de Cadastro</label>
-        <input type="date" name="dataCadastroGrupo" id="dataCadastroGrupo">
+        <input require type="date" name="dataCadastroGrupo" id="dataCadastroGrupo" class="form-control">
         <br>
 
-        <button type="submit" name="btn-cadastrar">Cadastrar</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" name="btn-cadastrar">Cadastrar</button>
     
         <a class="btn btn-lg btn-primary btn-block" href="escolha_cadastro.php">Voltar</a>
         

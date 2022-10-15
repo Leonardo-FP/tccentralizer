@@ -33,7 +33,7 @@
     <form method="POST">
         
         <label for="senha_antiga">Senha antiga:</label>
-        <input class="form-control" type="password" name="senha_antiga" required>
+        <input class="form-control" type="password" name="senha_antiga" required autofocus>
         <br>
 
         <label for="nova_senha">Nova senha:</label>

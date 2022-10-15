@@ -17,8 +17,8 @@
 <body>
 
     <div class="home">
-    
-        <h1>Controle de Trabalhos de Conclusão de Curso</h1>
+        
+        <h1><u>Controle de Trabalhos de Conclusão de Curso</u></h1>
 
         <h2>Bem vindo</h2>
         <br>

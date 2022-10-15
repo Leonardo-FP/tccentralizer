@@ -5,11 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Autenticação</title>
+    <title>Autenticação Grupo</title>
 </head>
 <body>
 
-    <h1>Login Grupo</h1>
 
     <form method="POST" action="../php/teste_login.php">
 
