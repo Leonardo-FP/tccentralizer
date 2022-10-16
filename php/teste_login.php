@@ -26,6 +26,9 @@ if(isset($_POST['submitOrientador'])){
             $_SESSION['senha'] = $senha;
             $_SESSION['usuario'] = $usuario;
             header('Location: ../telas/home.php');
+
+            $dados_professor = $u->infos_professor($nome, $senha);
+            $_SESSION['email_professor'] = $dados_professor['emailProfessor'];
         }
     }else{
         echo "Digite os campos corretamente";
@@ -52,8 +55,10 @@ if(isset($_POST['submitOrientador'])){
             $_SESSION['usuario'] = $usuario;
 
             $dados_grupo = $u->infos_grupo($nome, $senha);
-            $_SESSION['id_turma'] = $dados_grupo['idTurma'];
             $_SESSION['id_grupo'] = $dados_grupo['idGrupo'];
+            $_SESSION['email_grupo'] = $dados_grupo['emailGrupo'];
+
+            $_SESSION['id_turma'] = $dados_grupo['idTurma'];
 
             header('Location: ../telas/home.php');
         }

@@ -60,6 +60,23 @@ class database
         }
     }
 
+    public function infos_professor($nome, $senha)
+    {
+        global $con;
+        $sql = $con->prepare("SELECT * FROM tccentralizer.professor WHERE nomeProfessor = :nomeProfessor AND senhaProfessor = :senhaProfessor");
+        $sql->bindValue(":nomeProfessor", $nome);
+        $sql->bindValue(":senhaProfessor", $senha);
+        $sql->execute();
+
+        $lista = $sql->fetch();
+
+        if ($sql->rowCount() > 0) {
+            return $lista;
+        }else{
+            return false;
+        }
+    }
+
     public function busca_antiga_orientador($logado){
         global $con;
 
@@ -200,5 +217,26 @@ class database
             return false;
         }
     }
-    
+
+    public function busca_prof($id_turma){
+        global $con;
+
+        $sql = $con->prepare("SELECT nomeProfessor, emailProfessor 
+                                FROM tccentralizer.professor AS prof
+                                JOIN tccentralizer.turma AS turm ON (prof.idProfessor = turm.fk_idProfessor)
+                                JOIN tccentralizer.grupo AS grup ON (turm.idTurma = grup.idTurma)
+                                WHERE grup.idTurma = :id_turm;");
+
+        $sql->bindValue(":id_turm", $id_turma);
+
+        $sql->execute();
+
+        $lista = $sql->fetch();
+
+        if ($sql->rowCount() > 0) {
+            return $lista;
+        }else{
+            return false;
+        }
+    }
 }

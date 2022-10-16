@@ -15,7 +15,6 @@
         echo "<script>location.href='escolha_login.php';</script>";
     }
     $logado = $_SESSION['nome'];
-    echo $logado;
 ?>
 
 
