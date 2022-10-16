@@ -19,8 +19,11 @@
     
         <a class="btn btn-lg btn-primary btn-block" href="cadastro_grupo.php">Grupo</a>
         <br>
+
+        <a class="btn btn-lg btn-primary btn-block" href="cadastro_turma.php">Turma</a>
+        <br>
         
-        <a class="btn btn-lg btn-primary btn-block" href="../telas/home.php">Voltar</a>
+        <a class="btn btn-lg btn-primary btn-block" href="../index.php">Voltar</a>
 
     </div>
     
