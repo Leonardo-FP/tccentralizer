@@ -124,7 +124,6 @@
                     }
 
                     try {
-                        $mail->SMTPDebug = SMTP::DEBUG_SERVER; 
                         $mail->CharSet = 'UTF-8';                     
                         $mail->isSMTP();                                           
                         $mail->Host       = 'smtp.mailtrap.io';                     
@@ -145,8 +144,8 @@
                         $mail->send();
                         echo 'E-mail enviado com sucesso!';
                     } catch (Exception $e) {
-                        echo "Erro. Não foi possível enviar o e-mail. Error PHPMailer: {$mail->ErrorInfo}";
-                        // echo "Erro. Não foi possível enviar o e-mail.";
+                        // echo "Erro. Não foi possível enviar o e-mail. Error PHPMailer: {$mail->ErrorInfo}";
+                        echo "Erro. Não foi possível enviar o e-mail.";
                     }
 
                     header("Refresh: 0");

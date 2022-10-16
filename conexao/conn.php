@@ -147,8 +147,8 @@ class database
         global $con;
 
         $sql = $con->prepare("SELECT * FROM tccentralizer.entrega AS ent
-        JOIN tccentralizer.documento AS doc ON ent.idDocumento = doc.idDocumento
-        WHERE ent.idGrupo = :idGrupo;");
+                                JOIN tccentralizer.documento AS doc ON ent.idDocumento = doc.idDocumento
+                                WHERE ent.idGrupo = :idGrupo;");
 
         $sql->bindValue(":idGrupo", $id_grupo);
 
@@ -239,4 +239,45 @@ class database
             return false;
         }
     }
+
+    public function busca_todas_turmas($id_professor){
+        global $con;
+
+        $sql = $con->prepare("SELECT turm.idTurma, turm.nomeTurma, prof.nomeProfessor FROM tccentralizer.turma turm
+                            JOIN tccentralizer.professor AS prof ON turm.fk_idProfessor = prof.idProfessor
+                            WHERE fk_idProfessor = :id_prof;");
+
+        $sql->bindValue(":id_prof", $id_professor);
+
+        $sql->execute();
+
+        $lista = $sql->fetchAll();
+
+        if ($sql->rowCount() > 0) {
+            return $lista;
+        }else{
+            return false;
+        }
+    }
+    
+    public function busca_todos_grupos($id_turma){
+        global $con;
+
+        $sql = $con->prepare("SELECT idGrupo, nomeGrupo, emailGrupo, dataCadastro 
+                                FROM tccentralizer.grupo
+                                WHERE idTurma = :id_turm;");
+
+        $sql->bindValue(":id_turm", $id_turma);
+
+        $sql->execute();
+
+        $lista = $sql->fetchAll();
+
+        if ($sql->rowCount() > 0) {
+            return $lista;
+        }else{
+            return false;
+        }
+    }
+    
 }
