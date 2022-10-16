@@ -1,6 +1,6 @@
 <!-- Somente os alunos têm acesso a essa página (comentário necessário após eu confundir isso duas vezes e perder tempo) -->
 <!DOCTYPE html>
-<?php
+<!--<?php
     date_default_timezone_set ("America/Sao_Paulo");
 
     include("../conexao/conn.php");    
@@ -161,7 +161,7 @@
             echo "<p>Falha ao enviar arquivo.</p>";
         }
     }
-?>
+?>-->
 
 
 <html lang="pt-br">
@@ -169,12 +169,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="../css/style.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        body{
+            padding: 10px;
+        }
+    </style>
     <title>Seleção de Documento</title>
 </head>
 <body>
     <h1>Arquivos a entregar</h1>
-    <table border="1" cellpadding="10">
+    <table class="table table-dark" border="1" cellpadding="10">
         <thead>
             <th>Tipo de documento</th>
             <th>Prazo limite</th>
@@ -201,7 +206,7 @@
     <form method="POST" enctype="multipart/form-data">
         <p>
             <label for="tipo_arquivo">Selecione o tipo de arquivo que deseja enviar</label>
-            <select name="tipo_arquivo" required>
+            <select class="btn btn-secondary btn-sm" name="tipo_arquivo" required>
                 <option value="primeiro">Primeira entrega</option>
                 <option value="segundo">Segunda entrega</option>
                 <option value="terceiro">Terceira entrega</option>
@@ -211,13 +216,16 @@
         </p>
         <p>
             <label for="arquivo">Selecione o arquivo</label>
-            <input name="arquivo" type="file">
+            <input class="btn btn-secondary" name="arquivo" type="file">
         </p>
-        <button type="submit">Enviar arquivo</button>
+        <br>
+        <button class="btn btn-primary" type="submit">Enviar arquivo</button>
     </form>
+    <br>
+    <hr>
 
     <h1>Arquivos enviados</h1>
-    <table border="1" cellpadding="10">
+    <table class="table table-dark" border="1" cellpadding="10">
         <thead>
             <th>Arquivo</th>
             <th>Data de envio</th>
