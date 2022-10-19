@@ -1,21 +1,5 @@
 <!DOCTYPE html>
 
-<?php
-    session_start();
-    include_once('../conexao/conn.php');
-    $u = new database;
-    $u->conectar();
-
-    if((!isset($_SESSION['nome'])) and (!isset($_SESSION['senha'])))  {
-        unset($_SESSION['nome']);
-        unset($_SESSION['senha']);
-
-        echo "<script>alert('Você não pode entrar aqui sem logar!!!!!!')</script>";
-
-        echo "<script>location.href='escolha_login.php';</script>";
-    }
-    $logado = $_SESSION['nome'];
-?>
 
 
 
