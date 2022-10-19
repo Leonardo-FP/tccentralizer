@@ -18,7 +18,7 @@ class database
     {
         if($usuario == "grupo"){
             global $con;
-            $sql = $con->prepare("SELECT * FROM tccentra_tccentralizer.grupo WHERE nomeGrupo = :nomeGrupo AND senhaGrupo = :senhaGrupo");
+            $sql = $con->prepare("SELECT * FROM grupo WHERE nomeGrupo = :nomeGrupo AND senhaGrupo = :senhaGrupo");
             $sql->bindValue(":nomeGrupo", $nome);
             $sql->bindValue(":senhaGrupo", $senha);
             $sql->execute();
@@ -30,7 +30,7 @@ class database
             }
         }else if($usuario == "orientador"){
             global $con;
-            $sql = $con->prepare("SELECT * FROM tccentra_tccentralizer.professor WHERE nomeProfessor = :nomeProfessor AND senhaProfessor = :senhaProfessor");
+            $sql = $con->prepare("SELECT * FROM professor WHERE nomeProfessor = :nomeProfessor AND senhaProfessor = :senhaProfessor");
             $sql->bindValue(":nomeProfessor", $nome);
             $sql->bindValue(":senhaProfessor", $senha);
             $sql->execute();
@@ -46,7 +46,7 @@ class database
     public function infos_grupo($nome, $senha)
     {
         global $con;
-        $sql = $con->prepare("SELECT * FROM tccentra_tccentralizer.grupo WHERE nomeGrupo = :nomeGrupo AND senhaGrupo = :senhaGrupo");
+        $sql = $con->prepare("SELECT * FROM grupo WHERE nomeGrupo = :nomeGrupo AND senhaGrupo = :senhaGrupo");
         $sql->bindValue(":nomeGrupo", $nome);
         $sql->bindValue(":senhaGrupo", $senha);
         $sql->execute();
@@ -63,7 +63,7 @@ class database
     public function infos_professor($nome, $senha)
     {
         global $con;
-        $sql = $con->prepare("SELECT * FROM tccentra_tccentralizer.professor WHERE nomeProfessor = :nomeProfessor AND senhaProfessor = :senhaProfessor");
+        $sql = $con->prepare("SELECT * FROM professor WHERE nomeProfessor = :nomeProfessor AND senhaProfessor = :senhaProfessor");
         $sql->bindValue(":nomeProfessor", $nome);
         $sql->bindValue(":senhaProfessor", $senha);
         $sql->execute();
@@ -80,7 +80,7 @@ class database
     public function busca_antiga_orientador($logado){
         global $con;
 
-        $sql = $con->prepare("SELECT * FROM tccentra_tccentralizer.professor WHERE nomeProfessor = :nomeProfessor");
+        $sql = $con->prepare("SELECT * FROM professor WHERE nomeProfessor = :nomeProfessor");
 
         $sql->bindValue(":nomeProfessor", $logado);
 
@@ -98,7 +98,7 @@ class database
     public function busca_antiga_grupo($logado){
         global $con;
 
-        $sql = $con->prepare("SELECT * FROM tccentra_tccentralizer.grupo WHERE nomeGrupo = :nomeGrupo");
+        $sql = $con->prepare("SELECT * FROM grupo WHERE nomeGrupo = :nomeGrupo");
 
         $sql->bindValue(":nomeGrupo", $logado);
 
@@ -116,7 +116,7 @@ class database
     public function muda_senha_orientador($nova_senha, $logado){
         global $con;
 
-        $sql = $con->prepare("UPDATE tccentra_tccentralizer.professor
+        $sql = $con->prepare("UPDATE professor
                             SET senhaProfessor = :nova_senha
                             WHERE nomeProfessor = :logado;");
 
@@ -131,7 +131,7 @@ class database
     public function muda_senha_grupo($nova_senha, $logado){
         global $con;
 
-        $sql = $con->prepare("UPDATE tccentra_tccentralizer.grupo
+        $sql = $con->prepare("UPDATE grupo
                             SET senhaGrupo = :nova_senha
                             WHERE nomeGrupo = :logado;");
 
@@ -146,8 +146,8 @@ class database
     public function busca_arquivos($id_grupo){
         global $con;
 
-        $sql = $con->prepare("SELECT * FROM tccentra_tccentralizer.entrega AS ent
-                                JOIN tccentra_tccentralizer.documento AS doc ON ent.idDocumento = doc.idDocumento
+        $sql = $con->prepare("SELECT * FROM entrega AS ent
+                                JOIN documento AS doc ON ent.idDocumento = doc.idDocumento
                                 WHERE ent.idGrupo = :idGrupo;");
 
         $sql->bindValue(":idGrupo", $id_grupo);
@@ -166,7 +166,7 @@ class database
     public function registra_entrega($idDoc, $idGrupo, $responsavel, $dataEntrega, $atraso, $nomeArq, $path){
         global $con;
 
-        $sql = $con->prepare("INSERT INTO tccentra_tccentralizer.entrega (idDocumento, idGrupo, usuarioResponsavel, dataEntrega, atraso, nomeArquivo, path) VALUES (:idDoc, :idGrupo, :responsavel, :dataEntrega, :atraso, :nomeArq, :path);");
+        $sql = $con->prepare("INSERT INTO entrega (idDocumento, idGrupo, usuarioResponsavel, dataEntrega, atraso, nomeArquivo, path) VALUES (:idDoc, :idGrupo, :responsavel, :dataEntrega, :atraso, :nomeArq, :path);");
 
         $sql->bindValue(":idDoc", $idDoc);
         $sql->bindValue(":idGrupo", $idGrupo);
@@ -184,7 +184,7 @@ class database
     public function busca_info_doc($id_turma, $tipo_doc){
         global $con;
 
-        $sql = $con->prepare("SELECT * FROM tccentra_tccentralizer.documento WHERE idTurma = :id_turma AND tipoDocumento = :tipo_doc");
+        $sql = $con->prepare("SELECT * FROM documento WHERE idTurma = :id_turma AND tipoDocumento = :tipo_doc");
 
         $sql->bindValue(":id_turma", $id_turma);
         $sql->bindValue(":tipo_doc", $tipo_doc);
@@ -203,7 +203,7 @@ class database
     public function busca_docs_a_entregar($id_turma){
         global $con;
 
-        $sql = $con->prepare("SELECT * FROM tccentra_tccentralizer.documento WHERE idTurma = :id_turma");
+        $sql = $con->prepare("SELECT * FROM documento WHERE idTurma = :id_turma");
 
         $sql->bindValue(":id_turma", $id_turma);
 
@@ -222,9 +222,9 @@ class database
         global $con;
 
         $sql = $con->prepare("SELECT nomeProfessor, emailProfessor 
-                                FROM tccentra_tccentralizer.professor AS prof
-                                JOIN tccentra_tccentralizer.turma AS turm ON (prof.idProfessor = turm.fk_idProfessor)
-                                JOIN tccentra_tccentralizer.grupo AS grup ON (turm.idTurma = grup.idTurma)
+                                FROM professor AS prof
+                                JOIN turma AS turm ON (prof.idProfessor = turm.fk_idProfessor)
+                                JOIN grupo AS grup ON (turm.idTurma = grup.idTurma)
                                 WHERE grup.idTurma = :id_turm;");
 
         $sql->bindValue(":id_turm", $id_turma);
@@ -243,8 +243,8 @@ class database
     public function busca_todas_turmas($id_professor){
         global $con;
 
-        $sql = $con->prepare("SELECT turm.idTurma, turm.nomeTurma, prof.nomeProfessor FROM tccentra_tccentralizer.turma turm
-                            JOIN tccentra_tccentralizer.professor AS prof ON turm.fk_idProfessor = prof.idProfessor
+        $sql = $con->prepare("SELECT turm.idTurma, turm.nomeTurma, prof.nomeProfessor FROM turma turm
+                            JOIN professor AS prof ON turm.fk_idProfessor = prof.idProfessor
                             WHERE fk_idProfessor = :id_prof;");
 
         $sql->bindValue(":id_prof", $id_professor);
@@ -264,7 +264,7 @@ class database
         global $con;
 
         $sql = $con->prepare("SELECT idGrupo, nomeGrupo, emailGrupo, dataCadastro 
-                                FROM tccentra_tccentralizer.grupo
+                                FROM grupo
                                 WHERE idTurma = :id_turm;");
 
         $sql->bindValue(":id_turm", $id_turma);
