@@ -18,9 +18,7 @@ class database
     {
         if($usuario == "grupo"){
             global $con;
-            $sql = $con->prepare("SELECT * FROM grupo WHERE nomeGrupo = :nomeGrupo AND senhaGrupo = :senhaGrupo");
-            $sql->bindValue(":nomeGrupo", $nome);
-            $sql->bindValue(":senhaGrupo", $senha);
+            $sql = $con->prepare("SELECT * FROM grupo WHERE nomeGrupo = '". $nome. "' AND senhaGrupo = '". $senha ."'");
             $sql->execute();
     
             if ($sql->rowCount() == 0) {
@@ -30,9 +28,7 @@ class database
             }
         }else if($usuario == "orientador"){
             global $con;
-            $sql = $con->prepare("SELECT * FROM professor WHERE nomeProfessor = :nomeProfessor AND senhaProfessor = :senhaProfessor");
-            $sql->bindValue(":nomeProfessor", $nome);
-            $sql->bindValue(":senhaProfessor", $senha);
+            $sql = $con->prepare("SELECT * FROM professor WHERE nomeProfessor = '". $nome. "' AND senhaProfessor = '". $senha ."'");
             $sql->execute();
     
             if ($sql->rowCount() == 0) {
