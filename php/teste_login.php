@@ -9,72 +9,68 @@ include_once('../conexao/conn.php');
 $u = new database;
 $u->conectar();
 
-if ($u->msgErro == "") {
-    if(isset($_POST['submitOrientador'])){   
-        if(!empty($_POST['nomeOrientador']) && !empty($_POST['senhaOrientador'])){
+if(isset($_POST['submitOrientador'])){   
+    if(!empty($_POST['nomeOrientador']) && !empty($_POST['senhaOrientador'])){
 
-            $nome = $_POST['nomeOrientador'];
-            $senha = $_POST['senhaOrientador'];
-            $usuario = "orientador";
-            
-            $existe_usuario = $u->verifica_login($nome, $senha, $usuario);
-            
-            if(!$existe_usuario){
-                unset($_SESSION['nome']);
-                unset($_SESSION['senha']);
+        $nome = $_POST['nomeOrientador'];
+        $senha = $_POST['senhaOrientador'];
+        $usuario = "orientador";
+        
+        $existe_usuario = $u->verifica_login($nome, $senha, $usuario);
+        
+        if(!$existe_usuario){
+            unset($_SESSION['nome']);
+            unset($_SESSION['senha']);
 
-                echo "<script>alert('Usuário não encontrado no banco de dados!')</script>";
+            echo "<script>alert('Usuário não encontrado no banco de dados!')</script>";
 
-                echo "<script>location.href='../telas/tela_login_orientador.php';</script>";
-            }else{
-                $_SESSION['nome'] = $nome;
-                $_SESSION['senha'] = $senha;
-                $_SESSION['usuario'] = $usuario;
-                header('Location: ../telas/home.php');
-
-                $dados_professor = $u->infos_professor($nome, $senha);
-                $_SESSION['email_professor'] = $dados_professor['emailProfessor'];
-            }
+            echo "<script>location.href='../telas/tela_login_orientador.php';</script>";
         }else{
-            echo "Digite os campos corretamente";
-        }
-    }else if(isset($_POST['submitGrupo'])){
-        if(!empty($_POST['nomeGrupo']) && !empty($_POST['senhaGrupo'])){
+            $_SESSION['nome'] = $nome;
+            $_SESSION['senha'] = $senha;
+            $_SESSION['usuario'] = $usuario;
+            header('Location: ../telas/home.php');
 
-            $nome = $_POST['nomeGrupo'];
-            $senha = $_POST['senhaGrupo'];
-            $usuario = "grupo";
-            
-            $existe_usuario = $u->verifica_login($nome, $senha, $usuario);
-            
-            if(!$existe_usuario){
-                unset($_SESSION['nome']);
-                unset($_SESSION['senha']);
-
-                echo "<script>alert('Usuário não encontrado no banco de dados!')</script>";
-
-                echo "<script>location.href='../telas/tela_login_grupo.php';</script>";
-            }else{
-                $_SESSION['nome'] = $nome;
-                $_SESSION['senha'] = $senha;
-                $_SESSION['usuario'] = $usuario;
-
-                $dados_grupo = $u->infos_grupo($nome, $senha);
-                $_SESSION['id_grupo'] = $dados_grupo['idGrupo'];
-                $_SESSION['email_grupo'] = $dados_grupo['emailGrupo'];
-
-                $_SESSION['id_turma'] = $dados_grupo['idTurma'];
-
-                header('Location: ../telas/home.php');
-            }
-        }else{
-            echo "Digite os campos corretamente";
+            $dados_professor = $u->infos_professor($nome, $senha);
+            $_SESSION['email_professor'] = $dados_professor['emailProfessor'];
         }
     }else{
-        header('Location: ../index.php');
+        echo "Digite os campos corretamente";
+    }
+}else if(isset($_POST['submitGrupo'])){
+    if(!empty($_POST['nomeGrupo']) && !empty($_POST['senhaGrupo'])){
+
+        $nome = $_POST['nomeGrupo'];
+        $senha = $_POST['senhaGrupo'];
+        $usuario = "grupo";
+        
+        $existe_usuario = $u->verifica_login($nome, $senha, $usuario);
+        
+        if(!$existe_usuario){
+            unset($_SESSION['nome']);
+            unset($_SESSION['senha']);
+
+            echo "<script>alert('Usuário não encontrado no banco de dados!')</script>";
+
+            echo "<script>location.href='../telas/tela_login_grupo.php';</script>";
+        }else{
+            $_SESSION['nome'] = $nome;
+            $_SESSION['senha'] = $senha;
+            $_SESSION['usuario'] = $usuario;
+
+            $dados_grupo = $u->infos_grupo($nome, $senha);
+            $_SESSION['id_grupo'] = $dados_grupo['idGrupo'];
+            $_SESSION['email_grupo'] = $dados_grupo['emailGrupo'];
+
+            $_SESSION['id_turma'] = $dados_grupo['idTurma'];
+
+            header('Location: ../telas/home.php');
+        }
+    }else{
+        echo "Digite os campos corretamente";
     }
 }else{
-    echo "Erro ao conectar com o banco";
+    header('Location: ../index.php');
 }
 ?>
 

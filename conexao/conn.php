@@ -3,14 +3,13 @@
 class database
 {
 	private $con;
-	public $msgErro = "";
 	public function conectar()
 	{
 		global $con;
 		try {
             $con = new PDO("mysql:host=109.106.251.136:3306;dbname=tccentra_tccentralizer;","tccentra_leo","12345");
 		} catch (PDOException $e) {
-			$msgErro = $e->getMessage();
+			throw new PDOException($e);
 		}
 	}
 
