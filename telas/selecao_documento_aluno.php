@@ -1,6 +1,7 @@
 <!-- Somente os alunos têm acesso a essa página (comentário necessário após eu confundir isso duas vezes e perder tempo) -->
+
 <!DOCTYPE html>
-<!--<?php
+<?php
     date_default_timezone_set ("America/Sao_Paulo");
 
     include("../conexao/conn.php");    
@@ -124,14 +125,24 @@
                     }
 
                     try {
+                        // MAILTRAPER
+                        // $mail->CharSet = 'UTF-8';                     
+                        // $mail->isSMTP();                                           
+                        // $mail->Host       = 'smtp.mailtrap.io';                     
+                        // $mail->SMTPAuth   = true;                                   
+                        // $mail->Username   = '07ce7b144095e4';                  
+                        // $mail->Password   = '53972c0ac66884';                               
+                        // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            
+                        // $mail->Port       = 2525;     
+                        
                         $mail->CharSet = 'UTF-8';                     
                         $mail->isSMTP();                                           
-                        $mail->Host       = 'smtp.mailtrap.io';                     
+                        $mail->Host       = 'https://mail.tccentralizer.com.br:2080';                     
                         $mail->SMTPAuth   = true;                                   
-                        $mail->Username   = '07ce7b144095e4';                  
-                        $mail->Password   = '53972c0ac66884';                               
+                        $mail->Username   = 'tccen@tccentralizer.com.br';                  
+                        $mail->Password   = '@tccen123';                               
                         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            
-                        $mail->Port       = 2525;          
+                        $mail->Port       = 2080;  
                         
                         $mail->setFrom("$email_grupo", "$nome_grupo");
                         $mail->addAddress("$email_professor", "$nome_professor");    
@@ -161,7 +172,7 @@
             echo "<p>Falha ao enviar arquivo.</p>";
         }
     }
-?>-->
+?>
 
 
 <html lang="pt-br">
