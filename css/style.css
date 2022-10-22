@@ -1,18 +1,12 @@
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
 /* Get_Bootstrap */
-@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css);
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css);
 
 
 body{
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color:#2c3338;
+    color:#606468;
     font-family: 'Roboto', sans-serif;
+    font-size: large;
 }
 
 input{
@@ -42,7 +36,14 @@ a:link{
 .home > * {
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
 
 }
+
+.nav {
+    height: 50px;
+}
+
+
 
