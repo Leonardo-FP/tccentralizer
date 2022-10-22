@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set ("America/Sao_Paulo");
+
 class database
 {
 	private $con;
@@ -274,5 +276,50 @@ class database
             return false;
         }
     }
+
+    public function nova_correcao($id_entrega, $nota_entrega){
+        global $con;
+        $data_correcao = date('Y-m-d H:i:s');
+
+        $sqlSelect = $con->prepare("SELECT * FROM correcao WHERE idEntrega = :id_entrega;");
+        $sqlSelect->bindValue(":id_entrega", $id_entrega);
+        
+        if($sqlSelect->rowCount() > 0) {
+            $sql = $con->prepare("UPDATE correcao SET dataAtualizacao = :dataAtt, nota = :nota WHERE idEntrega = :id_entrega;");
+
+            $sql->bindValue(":id_entrega", $id_entrega);
+            $sql->bindValue(":nota_entrega", $nota_entrega);
+            $sql->bindValue(":data_correcao", $data_correcao);
+
+            $sql->execute();
+
+            return true;
+        }else{
+            $sql = $con->prepare("INSERT INTO correcao (idEntrega, dataCorrecao, nota) VALUES (:id_entrega, :data_correcao, :nota_entrega);");
+
+            $sql->bindValue(":id_entrega", $id_entrega);
+            $sql->bindValue(":nota_entrega", $nota_entrega);
+            $sql->bindValue(":data_correcao", $data_correcao);
     
+            $sql->execute();
+
+            return true;
+        }
+    }
+
+    public function busca_correcoes(){
+        global $con;
+
+        $sql = $con->prepare("SELECT * FROM correcao;");
+
+        $sql->execute();
+
+        $lista = $sql->fetchAll();
+
+        if ($sql->rowCount() > 0) {
+            return $lista;
+        }else{
+            return false;
+        }
+    }
 }

@@ -189,6 +189,7 @@
     <title>Seleção de Documento</title>
 </head>
 <body>
+    <a href="home.php" class="btn btn-primary">Voltar</a>
     <h1>Arquivos a entregar</h1>
     <table class="table table-dark" border="1" cellpadding="10">
         <thead>

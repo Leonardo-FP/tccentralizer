@@ -1,4 +1,6 @@
 <?php 
+    date_default_timezone_set ("America/Sao_Paulo");
+
     include_once('../conexao/conn.php');
     $u = new database;
     $u->conectar();
@@ -20,9 +22,8 @@
     }
 
     $id_grupo = $_GET['id_grupo']; 
-
     $infos_entrega = $u->busca_arquivos($id_grupo);
-
+    $correcoes_feitas = $u->busca_correcoes();
 ?>
 
 <!DOCTYPE html>
@@ -51,11 +52,19 @@
                     <th>Prazo limite</th>
                     <th>Entregue com atraso</th>
                     <th>Atribuir nota</th>
+                    <th>Notas atribuídas</th>
                 </thead>
                 <tbody>
                     <?php 
                     if(!empty($infos_entrega)){
                         for($i = 0; $i < count($infos_entrega); $i++){
+                            if(!empty($correcoes_feitas)){
+                                foreach($correcoes_feitas as $correcao){
+                                    if($correcao['idEntrega'] == $infos_entrega[$i]['idEntrega']){
+                                        $nota_atribuida = $correcao['nota'];
+                                    }
+                                }
+                            }
                     ?>
                     <tr>
                         <td><?php echo $infos_entrega[$i]['tipoDocumento']; ?></td>
@@ -70,29 +79,36 @@
                         <td><?php if($infos_entrega[$i]['atraso'] == 1){echo "Sim";}else{echo "Não";} ?></td>
 
                         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#<?php echo $infos_entrega[$i]['idEntrega']; ?>">Abrir</button></td>
-
-                        <div class="modal fade" id=<?php echo $infos_entrega[$i]['idEntrega']; ?> tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-lg" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Dê uma nota para essa entrega</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div>
-                                            <label for=""></label>                                            
-                                            <input class="form-control" name="nota" type="text" placeholder="Digite a nota">
+                        
+                        <form method="POST">
+                            <div class="modal fade" id=<?php echo $infos_entrega[$i]['idEntrega']; ?> tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Dê uma nota para essa entrega</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary">Salvar</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                                        <div class="modal-body">
+                                            <div>
+                                                <input type="hidden" name='dar_nota' readonly>
+                                                <input type="hidden" name="id_entrega" value=<?php echo $infos_entrega[$i]['idEntrega']; ?> readonly>
+
+                                                <label for="nota"></label>                                            
+                                                <input class="form-control" name="nota" type="number" placeholder="Digite a nota">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" name="submit" class="btn btn-primary">Salvar</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
+
+                        <td><?php echo number_format($nota_atribuida, 2, '.'); ?></td>
                     </tr>
                     <?php
                         }
@@ -107,3 +123,20 @@
     </div>
 </body>
 </html>
+<?php 
+    if(isset($_POST['dar_nota'])){
+        if(!empty($_POST['id_entrega']) && !empty($_POST['nota'])){
+            $id_entrega = $_POST['id_entrega'];
+            $nota_entrega = $_POST['nota'];
+
+            if($u->nova_correcao($id_entrega, $nota_entrega)){
+                echo "<script>alert('Nota enviada com sucesso!')</script>";
+                echo "<meta HTTP-EQUIV='refresh' CONTENT='0'>";
+            }else{
+                echo "<script>alert('Não foi possível enviar a nota!')</script>";
+            }
+        }else{
+            echo "Não foi possível capturar os campos necessários.";
+        }
+    }
+?>
