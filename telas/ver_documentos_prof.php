@@ -108,7 +108,16 @@
                             </div>
                         </form>
 
-                        <td><?php echo number_format($nota_atribuida, 2, '.'); ?></td>
+                        <td>
+                            <?php 
+                                if(!empty($nota_atribuida)){
+                                    echo number_format($nota_atribuida, 2, '.'); 
+                                }else{
+                                    echo "Nenhuma nota atribúida";
+                                }
+                                
+                            ?>
+                        </td>
                     </tr>
                     <?php
                         }

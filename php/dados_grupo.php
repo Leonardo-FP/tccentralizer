@@ -29,7 +29,11 @@ if(isset($_POST['btn-cadastrar'])){
             $_SESSION['nome'] = $nomeGrupo;
             $_SESSION['senha'] = $senhaGrupo;
             $_SESSION['usuario'] = "grupo";
-            $_SESSION['email_professor'] = $emailGrupo;
+            $_SESSION['email_grupo'] = $emailGrupo;
+
+            $dados_grupo = $u->infos_grupo($nomeGrupo, $senhaGrupo);
+            $_SESSION['id_grupo'] = $dados_grupo['idGrupo'];
+            $_SESSION['id_turma'] = $dados_grupo['idTurma'];
 
             header('Location: ../telas/home.php?sucesso');
         } else {
