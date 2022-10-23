@@ -50,6 +50,7 @@
         
         <div class="tela">
             <?php 
+            if(!empty($turmas)){
                 for($i = 0; $i < count($turmas); $i++){  
                     $grupos = $u->busca_todos_grupos($turmas[$i]['idTurma']); 
                     ?>
@@ -113,7 +114,13 @@
                             </div>
                         </div>
                     </div>
-                <?php } ?>
+                <?php 
+                } 
+            }else{
+                echo "<h2>Você não possui nenhuma turma! Deseja criar alguma? </h2>";
+                echo "<h2><a href='./cadastro_turma.php'>Criar turma</a></h2>";
+            }
+            ?>
         </div>
     </div>
 </body>

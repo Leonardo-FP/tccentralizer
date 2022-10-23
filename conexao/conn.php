@@ -74,6 +74,55 @@ class database
         }
     }
 
+    public function infos_turma($nome_turma, $id_prof)
+    {
+        global $con;
+        $sql = $con->prepare("SELECT * FROM turma WHERE nomeTurma = :nomeTurma AND fk_idProfessor = :idProf");
+        $sql->bindValue(":nomeTurma", $nome_turma);
+        $sql->bindValue(":idProf", $id_prof);
+        $sql->execute();
+
+        $lista = $sql->fetch();
+
+        if ($sql->rowCount() > 0) {
+            return $lista;
+        }else{
+            return false;
+        }
+    }
+    
+    public function busca_turmas()
+    {
+        global $con;
+        $sql = $con->prepare("SELECT * FROM turma");
+        $sql->execute();
+
+        $lista = $sql->fetchAll();
+
+        if ($sql->rowCount() > 0) {
+            return $lista;
+        }else{
+            return false;
+        }
+    }
+
+    public function busca_id_turma($nomeTurma)
+    {
+        global $con;
+        $sql = $con->prepare("SELECT idTurma FROM turma WHERE nomeTurma = :nomeTurma");
+        $sql->bindValue(":nomeTurma", $nomeTurma);
+
+        $sql->execute();
+
+        $lista = $sql->fetch();
+
+        if ($sql->rowCount() > 0) {
+            return $lista;
+        }else{
+            return false;
+        }
+    }
+
     public function busca_antiga_orientador($logado){
         global $con;
 
@@ -322,4 +371,34 @@ class database
             return false;
         }
     }
+
+    public function cria_nova_turma($nome_turma, $id_professor){
+        global $con;
+
+        $sql = $con->prepare("INSERT INTO turma (nomeTurma, fk_idProfessor) VALUES (:nome_turma, :id_prof);");
+
+        $sql->bindValue(":nome_turma", $nome_turma);
+        $sql->bindValue(":id_prof", $id_professor);
+
+        $sql->execute();
+
+        return true;
+    }
+
+    public function insere_documentos($id_turma, $id_professor, $tipo_doc, $data_documento){
+        global $con;
+
+        $sql = $con->prepare("INSERT INTO documento (idTurma, idProfessor, tipoDocumento, prazoEntrega) VALUES (:idTurma, :id_prof, :tipoDoc, :prazoEntrega);");
+
+        $sql->bindValue(":idTurma", $id_turma);
+        $sql->bindValue(":id_prof", $id_professor);
+        $sql->bindValue(":tipoDoc", $tipo_doc);
+        $sql->bindValue(":prazoEntrega", $data_documento);
+
+        $sql->execute();
+
+        return true;
+    }
+
+    
 }

@@ -67,7 +67,7 @@
                     if(!empty($antiga_orientador)){
                         if($senha_antiga == $antiga_orientador['senhaProfessor']){
                             if($u->muda_senha_orientador($nova_senha, $logado)){
-    
+                                $_SESSION['senha'] = $nova_senha;
                                 echo "<script>alert('Senha atualizada com sucesso!')</script>";
                                 echo "<script>location.href='home.php';</script>";
     
@@ -90,7 +90,7 @@
                     if(!empty($antiga_grupo)){
                         if($senha_antiga == $antiga_grupo['senhaGrupo']){
                             if($u->muda_senha_grupo($nova_senha, $logado)){
-    
+                                $_SESSION['senha'] = $nova_senha;
                                 echo "<script>alert('Senha atualizada com sucesso!')</script>";
                                 echo "<script>location.href='home.php';</script>";
     

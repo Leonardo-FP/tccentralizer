@@ -11,25 +11,25 @@
     <form action="../php/dados_orientador.php" method="POST">
 
         <label for="nomeOrientador">Nome Completo</label>
-        <input require autofocus type="text" name="nomeOrientador" id="nomeOrientador" class="form-control">
+        <input required autofocus type="text" name="nomeOrientador" id="nomeOrientador" class="form-control">
         <br>
 
 
         <label for="senhaOrientador">Senha</label>
-        <input require type="password" name="senhaOrientador" id="senhaOrientador" class="form-control">
+        <input required type="password" name="senhaOrientador" id="senhaOrientador" class="form-control">
         <br>
 
         <label for="emailOrientador">Email</label>
-        <input require autofocus type="email" name="emailOrientador" id="emailOrientador" class="form-control">
+        <input required autofocus type="email" name="emailOrientador" id="emailOrientador" class="form-control">
         <br>
 
 
         <label for="dataCadastroOrientador">Data de Cadastro</label>
-        <input require type="date" name="dataCadastroOrientador" id="dataCadastroOrientador" class="form-control">
+        <input readonly type="date" name="dataCadastroOrientador" id="dataCadastroOrientador" class="form-control" value=<?php echo date('Y-m-d H:i:s'); ?>>
         <br>
 
         <button class="btn btn-lg btn-primary btn-block" name="btn-cadastrar">Cadastrar</button>
-        <button class="btn btn-lg btn-primary btn-block">Voltar</button>
+        <a class="btn btn-lg btn-primary btn-block" href="escolha_cadastro.php">Voltar</a>
 
     </form>
 

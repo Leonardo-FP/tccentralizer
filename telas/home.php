@@ -10,6 +10,11 @@
         echo "<script>location.href='escolha_login.php';</script>";
     }
 
+    if(isset($_GET['sucesso'])){
+        echo "<script>alert('Cadastro efetuado com sucesso! Você agora já está logado.')</script>";
+    }
+
+    // print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +36,8 @@
             if(isset($_SESSION['usuario'])){
                 if($_SESSION['usuario'] == "orientador"){ ?>
                 <a class="btn btn-lg btn-primary btn-block" href="selecao_documentos_orientador.php">Documentos</a>
+                <br>
+                <a class="btn btn-lg btn-primary btn-block" href="cadastro_turma.php">Criar nova turma</a>
                 <br>
             <?php }else{ ?>
                 <a class="btn btn-lg btn-primary btn-block" href="selecao_documento_aluno.php">Documentos</a>
