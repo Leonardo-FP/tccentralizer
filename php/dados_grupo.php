@@ -23,7 +23,24 @@ if(isset($_POST['btn-cadastrar'])){
 
         $dataCadastroGrupo = mysqli_escape_string($connect, $_POST['dataCadastroGrupo']);
 
-        $sql = "INSERT INTO grupo(idTurma, nomeGrupo, senhaGrupo, emailGrupo, dataCadastro) VALUES ('$id_turma','$nomeGrupo', '$senhaGrupo', '$emailGrupo','$dataCadastroGrupo')";
+$verificar = "SELECT nomeGrupo FROM grupo WHERE nomeGrupo = '$nomeGrupo' AND senhaGrupo = '$senhaGrupo'";
+
+$result = mysqli_query($connect,$verificar);
+
+        if(mysqli_num_rows($result) == 1){
+
+            $_SESSION['grupo_existe'] = true;
+            echo "<script>alert('Grupo já cadastrado no sistema!')</script>";
+            echo "<script>location.href='../telas/escolha_login.php';</script>";
+            exit;
+            
+            
+        }   
+        $sql = "INSERT INTO grupo(idTurma, nomeGrupo, senhaGrupo, emailGrupo, dataCadastro) VALUES 
+        ('$id_turma','$nomeGrupo', '$senhaGrupo', '$emailGrupo','$dataCadastroGrupo')";
+
+
+    if($connect->query($sql) === true){
 
         if(mysqli_query($connect, $sql)){
             $_SESSION['nome'] = $nomeGrupo;
@@ -42,5 +59,5 @@ if(isset($_POST['btn-cadastrar'])){
     }else{
         header('Location: ../telas/tela_de_erro.php?erro=sem_turma');
     }
+    }
 }
-
