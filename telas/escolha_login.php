@@ -22,9 +22,9 @@
             </ul>
         </div>
     </nav>
-    <div class="home">
+    <div class="align">
         
-        <h2>Selecione como deseja logar</h2>
+        <h2> Selecione como deseja logar</h2>
 
         <a class="btn btn-lg btn-primary btn-block" href="tela_login_orientador.php">Orientador</a>
         <br>

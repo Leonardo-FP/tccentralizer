@@ -23,12 +23,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/home.css">
     <title>Menu Principal</title>
 </head>
 <body>
-
-    <div>
+<nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/tccentralizer/index.php">TCCentralizer</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="Home.php">Home</a></li>
+                <li><a href="sair.php">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="align">
         <a class="btn btn-lg btn-primary btn-block" href="atualizacao_senha.php">Atualizar Senha</a>
         <br>
 
@@ -45,7 +55,6 @@
             <?php }
             }
             
-        echo '<a class="btn btn-lg btn-primary btn-block" href="sair.php?token='.md5(session_id()).'">Logout</a>';
         ?>
         
     </div>

@@ -21,9 +21,9 @@
             </ul>
         </div>
     </nav>
-    <div class="home">
+    <div class="align">
 
-        <h2>Selecionar o tipo de cadastro</h2>
+        <h2>Selecione como deseja cadastrar</h2>
         
 
         <a class="btn btn-lg btn-primary btn-block" href="cadastro_orientador.php">Orientador</a>
