@@ -30,20 +30,18 @@
         
         <h1><u>Controle de Trabalhos de Conclusão de Curso</u></h1>
 
-        <h2>Bem vindo</h2>
+        <h2>Bem vindo(a)</h2>
         <br>
-
-        <h2 >Autores:
-            <br>
-            Leo
-            <br>
-            Yago
-            <br>
-            Rafael
-            <br>
-            Kayke
-        </h2>
-
+        
+        <div style="display:block; text-align: center; font-size: 25px;">
+            <h2>Autores</h2>
+            <p>Leonardo - <a href="https://github.com/Leonardo-FP" target="blank">GitHub</a> <ion-icon name="logo-github"></ion-icon></p>
+            <p>Yago - <a href="https://github.com/yagoalvess" target="blank">GitHub</a> <ion-icon name="logo-github"></ion-icon></p>
+            <p>Rafael - <a href="https://github.com/rac0711" target="blank">GitHub</a> <ion-icon name="logo-github"></ion-icon></p>
+            <p> Kayke - <a href="https://github.com/KaykeMatiasS" target="blank">GitHub</a> <ion-icon name="logo-github"></ion-icon></p>
+        </div>
     </div>
+    <script  type = "module"  src = "https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" ></script> 
+    <script  nomodule  src = "https://unpkg .com/ionicons@5.5.2/dist/ionicons/ionicons.js" ></script>
 </body>
 </html>
