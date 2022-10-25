@@ -24,6 +24,10 @@
     $id_grupo = $_GET['id_grupo']; 
     $infos_entrega = $u->busca_arquivos($id_grupo);
     $correcoes_feitas = $u->busca_correcoes();
+
+    // echo "<pre>";
+    // print_r($correcoes_feitas);
+    // echo "</pre>";
 ?>
 
 <!DOCTYPE html>

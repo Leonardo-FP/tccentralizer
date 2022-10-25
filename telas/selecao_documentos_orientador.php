@@ -26,7 +26,6 @@
     $dados_professor = $u->infos_professor($nome, $senha);
 
     $turmas = $u->busca_todas_turmas($dados_professor['idProfessor']);
-    // $grupos = $u->busca_todos_grupos($dados_professor['idProfessor']);
 
 ?>
 

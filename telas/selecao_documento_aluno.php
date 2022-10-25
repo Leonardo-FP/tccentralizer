@@ -29,6 +29,15 @@
     $id_grupo = $_SESSION['id_grupo'];
 
     $arquivos_enviados = $u->busca_arquivos($id_grupo);
+    // print_r($arquivos_enviados);
+    // echo "<br>";
+    // echo "<br>";
+    $entregues = $u->busca_todas_entregas($id_grupo);
+    // echo "<pre>";
+    // print_r($entregues);
+    // echo "</pre>";
+    // echo "<br>";
+    // echo "<br>";
     $todos_docs = $u->busca_docs_a_entregar($id_turma);
     $informacoes_professor = $u->busca_prof($id_turma);
 
@@ -244,6 +253,7 @@
             <th>Prazo limite</th>
             <th>Tipo de documento</th>
             <th>Entregue com atraso</th>
+            <th>Nota da entrega</th>
         </thead>
         <tbody>
             <?php 
@@ -261,6 +271,17 @@
                 <td><?php echo $arquivos_enviados[$i]['tipoDocumento']; ?></td>
 
                 <td><?php if($arquivos_enviados[$i]['atraso'] == 1){echo "Sim";}else{echo "Não";} ?></td>
+                
+                <td><?php foreach($entregues as $ent){
+                            if($ent['idEntrega'] == $arquivos_enviados[$i]['idEntrega']){ ?>
+                            <?php if(!empty($ent['nota'])){
+                                    echo $ent['nota']; 
+                                }else{
+                                    echo "Nenhuma nota lançada";
+                                } 
+                            } 
+                         } ?>
+                </td> 
             </tr>
             <?php
                 }

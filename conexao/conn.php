@@ -400,5 +400,24 @@ class database
         return true;
     }
 
+    public function busca_todas_entregas($id_grupo){
+        global $con;
+
+        $sql = $con->prepare("SELECT * FROM entrega AS ent
+                                LEFT JOIN correcao AS corr ON ent.idEntrega = corr.idEntrega
+                                WHERE idGrupo = :id_grupo;");
+
+        $sql->bindValue(":id_grupo", $id_grupo);
+
+        $sql->execute();
+
+        $lista = $sql->fetchAll();
+
+        if ($sql->rowCount() > 0) {
+            return $lista;
+        }else{
+            return false;
+        }
+    }
     
 }
