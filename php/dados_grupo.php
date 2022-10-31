@@ -8,7 +8,6 @@ include_once('../conexao/conn.php');
 $u = new database;
 $u->conectar();
 
-
 if(isset($_POST['btn-cadastrar'])){
     if($_POST['nomeTurma'] != "SELECIONE"){
         $connect = mysqli_connect($servername,$username,$password,$db_name);
@@ -33,16 +32,13 @@ $result = mysqli_query($connect,$verificar);
             echo "<script>alert('Grupo já cadastrado no sistema!')</script>";
             echo "<script>location.href='../telas/escolha_login.php';</script>";
             exit;
-            
-            
         }   
         $sql = "INSERT INTO grupo(idTurma, nomeGrupo, senhaGrupo, emailGrupo, dataCadastro) VALUES 
         ('$id_turma','$nomeGrupo', '$senhaGrupo', '$emailGrupo','$dataCadastroGrupo')";
 
 
-    if($connect->query($sql) === true){
+        if($connect->query($sql) === true){
 
-        if(mysqli_query($connect, $sql)){
             $_SESSION['nome'] = $nomeGrupo;
             $_SESSION['senha'] = $senhaGrupo;
             $_SESSION['usuario'] = "grupo";
@@ -53,11 +49,10 @@ $result = mysqli_query($connect,$verificar);
             $_SESSION['id_turma'] = $dados_grupo['idTurma'];
 
             header('Location: ../telas/home.php?sucesso');
-        } else {
-            header('Location: ../index.php');
+        }else{
+            header('Location: ../telas/tela_de_erro.php?erro=sem_turma');
         }
     }else{
         header('Location: ../telas/tela_de_erro.php?erro=sem_turma');
-    }
     }
 }

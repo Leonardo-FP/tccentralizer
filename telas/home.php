@@ -13,8 +13,6 @@
     if(isset($_GET['sucesso'])){
         echo "<script>alert('Cadastro efetuado com sucesso! Você agora já está logado.')</script>";
     }
-
-    // print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>

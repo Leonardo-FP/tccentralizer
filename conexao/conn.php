@@ -419,5 +419,24 @@ class database
             return false;
         }
     }
+
+    public function busca_infos_grupo($id_grupo){
+        global $con;
+
+        $sql = $con->prepare("SELECT * FROM grupo AS gru WHERE idGrupo = :id_grupo;");
+
+        $sql->bindValue(":id_grupo", $id_grupo);
+
+        $sql->execute();
+
+        $lista = $sql->fetch();
+
+        if ($sql->rowCount() > 0) {
+            return $lista;
+        }else{
+            return false;
+        }
+    }
+    
     
 }

@@ -24,10 +24,18 @@
     $id_grupo = $_GET['id_grupo']; 
     $infos_entrega = $u->busca_arquivos($id_grupo);
     $correcoes_feitas = $u->busca_correcoes();
+    
+    $infos_grupo = $u->busca_infos_grupo($id_grupo);
 
-    // echo "<pre>";
-    // print_r($correcoes_feitas);
-    // echo "</pre>";
+    // IMPORTAÇÕES DO PHPMailer
+    
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+
+    require('../lib/vendor/autoload.php');
+
+    $mail = new PHPMailer(true);
 ?>
 
 <!DOCTYPE html>
@@ -63,6 +71,7 @@
                     <?php 
                     if(!empty($infos_entrega)){
                         for($i = 0; $i < count($infos_entrega); $i++){
+                            $nota_atribuida = -1;
                             if(!empty($correcoes_feitas)){
                                 foreach($correcoes_feitas as $correcao){
                                     if($correcao['idEntrega'] == $infos_entrega[$i]['idEntrega']){
@@ -99,6 +108,7 @@
                                             <div>
                                                 <input type="hidden" name='dar_nota' readonly>
                                                 <input type="hidden" name="id_entrega" value=<?php echo $infos_entrega[$i]['idEntrega']; ?> readonly>
+                                                <input type="hidden" name="tipo_doc" value=<?php echo $infos_entrega[$i]['tipoDocumento']; ?> readonly>
 
                                                 <label for="nota"></label>                                            
                                                 <input class="form-control" name="nota" type="number" placeholder="Digite a nota">
@@ -116,7 +126,11 @@
                         <td>
                             <?php 
                                 if(!empty($nota_atribuida)){
-                                    echo number_format($nota_atribuida, 2, '.'); 
+                                    if($nota_atribuida == -1){
+                                        echo "Nenhuma nota atribúida";
+                                    }else{
+                                        echo number_format($nota_atribuida, 2, '.'); 
+                                    }
                                 }else{
                                     echo "Nenhuma nota atribúida";
                                 }
@@ -142,9 +156,61 @@
         if(!empty($_POST['id_entrega']) && !empty($_POST['nota'])){
             $id_entrega = $_POST['id_entrega'];
             $nota_entrega = $_POST['nota'];
+            $tipo_doc = $_POST['tipo_doc'];
+
+            $nome_professor = $_SESSION['nome'];
+            $email_professor = $_SESSION['email_professor'];
+            
+            $nome_grupo = $infos_grupo['nomeGrupo'];
+            $email_grupo = $infos_grupo['emailGrupo'];
 
             if($u->nova_correcao($id_entrega, $nota_entrega)){
-                echo "<script>alert('Nota enviada com sucesso!')</script>";
+                // COMEÇO LÓGICA DE NOTIFICAÇÃO POR EMAIL
+                $título_email = "";
+                $corpo_email = "";
+                $corpo_alternativo = "";
+
+                if($tipo_doc != "final"){
+                    $título_email = "Correção do ".$tipo_doc." documento do projeto.";
+
+                    $corpo_email = "Olá aluno! Nós da TCCENTRALZIER notificamos que o professor ".$nome_professor." realizou a correção do <b>".$tipo_doc."</b> documento do projeto! A nota atribuída foi: ".$nota_entrega;
+
+                    $corpo_alternativo = "Olá aluno! Nós da TCCENTRALZIER notificamos que o professor ".$nome_professor." realizou a correção do ".$tipo_doc." documento do projeto! A nota atribuída foi: ".$nota_entrega;
+                }else{
+                    $título_email = "Correção do documento ".$tipo_doc." do projeto.";
+
+                    $corpo_email = "Olá aluno! Nós da TCCENTRALZIER notificamos que o professor ".$nome_professor." realizou a correção do documento <b>".$tipo_doc."</b> do projeto! A nota atribuída foi: ".$nota_entrega;
+
+                    $corpo_alternativo = "Olá aluno! Nós da TCCENTRALZIER notificamos que o professor ".$nome_professor." realizou a correção do documento ".$tipo_doc." do projeto! A nota atribuída foi: ".$nota_entrega;
+                }
+
+                try {
+                    // MAILTRAPER
+                    $mail->CharSet = 'UTF-8';                     
+                    $mail->isSMTP();                                           
+                    $mail->Host       = 'smtp.mailtrap.io';                     
+                    $mail->SMTPAuth   = true;                                   
+                    $mail->Username   = '07ce7b144095e4';                  
+                    $mail->Password   = '53972c0ac66884';                               
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            
+                    $mail->Port       = 2525;     
+                    
+                    $mail->setFrom("$email_professor", "$nome_professor"); 
+                    $mail->addAddress("$email_grupo", "$nome_grupo");
+                    
+                    $mail->isHTML(true);                                 
+                    $mail->Subject = "$título_email";
+                    $mail->Body    = "$corpo_email";
+                    $mail->AltBody = "$corpo_alternativo";
+                
+                    $mail->send();
+                    echo 'E-mail enviado com sucesso!';
+                } catch (Exception $e) {
+                    echo "<script>alert(Erro. Não foi possível enviar o e-mail. Error PHPMailer: {$mail->ErrorInfo})</script>";
+                    // echo "Erro. Não foi possível enviar o e-mail.";
+                }
+
+                echo "<script>alert('Correção enviada com sucesso!')</script>";
                 echo "<meta HTTP-EQUIV='refresh' CONTENT='0'>";
             }else{
                 echo "<script>alert('Não foi possível enviar a nota!')</script>";

@@ -1,3 +1,6 @@
+<?php 
+date_default_timezone_set ("America/Sao_Paulo");
+?>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -40,7 +43,7 @@
 
                 <div class="form__field">
                     <label for="dataCadastroOrientador"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Data de Cadastro</span></label>
-                    <input id="dataCadastroOrientador" type="date" name="dataCadastroOrientador" class="form__input" placeholder="Data de Cadastro" required="">
+                    <input readonly id="dataCadastroOrientador" type="date" name="dataCadastroOrientador" class="form__input" placeholder="Data de Cadastro" value=<?php echo date('Y-m-d H:i:s'); ?> required="">
                 </div>
 
                 <div class="form__field">

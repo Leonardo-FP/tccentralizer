@@ -29,15 +29,9 @@
     $id_grupo = $_SESSION['id_grupo'];
 
     $arquivos_enviados = $u->busca_arquivos($id_grupo);
-    // print_r($arquivos_enviados);
-    // echo "<br>";
-    // echo "<br>";
+  
     $entregues = $u->busca_todas_entregas($id_grupo);
-    // echo "<pre>";
-    // print_r($entregues);
-    // echo "</pre>";
-    // echo "<br>";
-    // echo "<br>";
+   
     $todos_docs = $u->busca_docs_a_entregar($id_turma);
     $informacoes_professor = $u->busca_prof($id_turma);
 
@@ -135,23 +129,23 @@
 
                     try {
                         // MAILTRAPER
-                        // $mail->CharSet = 'UTF-8';                     
-                        // $mail->isSMTP();                                           
-                        // $mail->Host       = 'smtp.mailtrap.io';                     
-                        // $mail->SMTPAuth   = true;                                   
-                        // $mail->Username   = '07ce7b144095e4';                  
-                        // $mail->Password   = '53972c0ac66884';                               
-                        // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            
-                        // $mail->Port       = 2525;     
-                        
                         $mail->CharSet = 'UTF-8';                     
                         $mail->isSMTP();                                           
-                        $mail->Host       = 'https://mail.tccentralizer.com.br:2080';                     
+                        $mail->Host       = 'smtp.mailtrap.io';                     
                         $mail->SMTPAuth   = true;                                   
-                        $mail->Username   = 'tccen@tccentralizer.com.br';                  
-                        $mail->Password   = '@tccen123';                               
+                        $mail->Username   = '07ce7b144095e4';                  
+                        $mail->Password   = '53972c0ac66884';                               
                         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            
-                        $mail->Port       = 2080;  
+                        $mail->Port       = 2525;     
+                        
+                        // $mail->CharSet = 'UTF-8';                     
+                        // $mail->isSMTP();                                           
+                        // $mail->Host       = 'https://mail.tccentralizer.com.br:2080';                     
+                        // $mail->SMTPAuth   = true;                                   
+                        // $mail->Username   = 'tccen@tccentralizer.com.br';                  
+                        // $mail->Password   = '@tccen123';                               
+                        // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            
+                        // $mail->Port       = 2080;  
                         
                         $mail->setFrom("$email_grupo", "$nome_grupo");
                         $mail->addAddress("$email_professor", "$nome_professor");    

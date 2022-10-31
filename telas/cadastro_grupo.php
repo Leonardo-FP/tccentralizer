@@ -41,7 +41,7 @@
                     <label for="nomeGrupo"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Nome do Grupo</span></label>
                         <?php if(!empty($turmas)){ ?>
                 <select class="form-control" name="nomeTurma" id="nomeTurma" required autofocus>
-                            <option value="Selecione Uma Turma" selected>Selecione Uma Turma</option>
+                            <option value="SELECIONE" selected>Selecione Uma Turma</option>
                     <?php foreach($turmas as $t){ ?>
                             <option value=<?php echo $t['idTurma']; ?>><?php echo $t['nomeTurma']; ?></option>
                     <?php } ?>
